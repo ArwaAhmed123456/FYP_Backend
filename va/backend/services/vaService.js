@@ -6,7 +6,7 @@
  */
 
 const { generateSpeech: proxyTTS, transcribeAudio: proxySTT } = require('./voiceProxy');
-const VoiceLog = require('../../../backend/models/VoiceLogModel');
+const VoiceLog = require('../../../models/VoiceLogModel');
 
 /**
  * Transcribe audio to text (English + Urdu via Python Whisper)

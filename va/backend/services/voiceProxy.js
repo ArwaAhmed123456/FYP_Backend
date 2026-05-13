@@ -4,12 +4,8 @@
  * Uses backend's node_modules so require('axios') resolves when this file is loaded from backend.
  */
 
-const path = require('path');
-const backendNodeModules = path.resolve(__dirname, '../../../backend/node_modules');
-const axiosModule = require(path.join(backendNodeModules, 'axios'));
-const axios = axiosModule.default || axiosModule;
-const FormDataModule = require(path.join(backendNodeModules, 'form-data'));
-const FormData = FormDataModule.default || FormDataModule;
+const axios = require('axios');
+const FormData = require('form-data');
 
 const PYTHON_VOICE_URL = process.env.PYTHON_WHISPER_URL || process.env.PYTHON_VOICE_URL || 'http://127.0.0.1:5000';
 const TIMEOUT_TTS = 30000;
