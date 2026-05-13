@@ -1,0 +1,6 @@
+# Voice Assistant Python server (Whisper STT + gTTS TTS)
+# Run: pip install -r requirements_va.txt
+flask>=2.0.0
+flask-cors>=3.0.0
+gtts>=2.3.0
+openai-whisper>=20230314

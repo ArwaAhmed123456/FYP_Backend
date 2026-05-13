@@ -1,0 +1,13 @@
+node_modules/
+venv/
+.env
+*.log
+uploads/
+data/
+.vscode/
+.github/
+.git/
+__pycache__/
+.pytest_cache/
+ml/
+test_*.js

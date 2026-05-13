@@ -1,0 +1,17 @@
+{
+  "TEST_PATIENT_ID": "690329113f2e271c2cf67ca2",
+  "TEST_DOCTOR_ID": "68f68ef4ddaa73a2d37d944b",
+  "TEST_CONSULTATION_ID": "691fc0d628469f0eda9179a8",
+  "TEST_CONSULTATION_IDS": [
+    "691fc0d628469f0eda9179a8",
+    "691fc0d628469f0eda9179ab",
+    "691fc0d728469f0eda9179ae",
+    "691fc0d728469f0eda9179b1",
+    "691fc0d728469f0eda9179b4",
+    "691fc0d728469f0eda9179b7",
+    "691fc0d828469f0eda9179ba",
+    "691fc0d828469f0eda9179bd",
+    "691fc0d828469f0eda9179c0",
+    "691fc0d828469f0eda9179c3"
+  ]
+}
