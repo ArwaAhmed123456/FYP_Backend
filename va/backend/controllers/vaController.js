@@ -5,7 +5,7 @@
  */
 
 const vaService = require('../services/vaService');
-const VoiceLog = require('../../../backend/models/VoiceLogModel');
+const VoiceLog = require('../../../models/VoiceLogModel');
 
 /**
  * Transcribe audio to text

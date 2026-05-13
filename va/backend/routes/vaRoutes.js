@@ -13,23 +13,10 @@
  * - /synthesize - TTS
  */
 
-// Note: Resolve express from Patient/backend/node_modules
-// Updated import path from /va to Patient/va structure
-// Since va folder is outside backend, we need to resolve from backend's node_modules
-// From Patient/va/backend/routes, go up 3 levels to Patient, then into backend/node_modules
-const path = require('path');
-const fs = require('fs');
-const backendNodeModules = path.resolve(__dirname, '../../../backend/node_modules');
-// Directly require express from backend's node_modules
-// Check if express exists, then require it
-const expressPath = path.join(backendNodeModules, 'express');
-if (!fs.existsSync(expressPath)) {
-  throw new Error(`Cannot find express at ${expressPath}. Please ensure dependencies are installed in Patient/backend.`);
-}
-const express = require(expressPath);
+const express = require('express');
 const router = express.Router();
 const vaController = require('../controllers/vaController');
-const { authenticateToken } = require('../../../backend/middleware/authChat');
+const { authenticateToken } = require('../../../middleware/authChat');
 
 // Voice assistant orchestration endpoints
 router.get('/health', vaController.health);
