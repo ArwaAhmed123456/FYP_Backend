@@ -1,4 +1,4 @@
-require('dotenv').config({ path: '../.env' });
+require('dotenv').config();
 require('dns').setDefaultResultOrder('ipv4first');
 
 // Global error handlers to prevent crash
@@ -170,6 +170,11 @@ require('./sockets/chatSocket').registerChatSocket(io);
 if (typeof callScheduler.setIO === 'function') {
   callScheduler.setIO(io);
 }
+
+// Root route
+app.get('/', (req, res) => {
+  res.send('<h1>Tabeeb Unified Backend is Live!</h1><p>Use /api/health to check status.</p>');
+});
 
 // Test route to verify server is working
 app.get('/test', (req, res) => {
