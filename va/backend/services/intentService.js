@@ -134,24 +134,26 @@ class IntentService {
                 return { type: 'unknown', confidence: 0.0, error: 'Budget limit reached' };
             }
 
-            console.log(`[IntentService Node] Calling Integrated Chatbot LLM for transcript: "${transcript}"`);
+            console.log(`[IntentService Node] Resolving locally for transcript: "${transcript}"`);
             
-            const CHATBOT_API_URL = process.env.CHATBOT_API_URL || 'http://localhost:5001';
+            const text = transcript.toLowerCase();
+            const navKeywords = {
+                "dashboard": "EnhancedDashboard", "home": "EnhancedDashboard", "ghar": "EnhancedDashboard",
+                "doctor": "Consultations", "consult": "Consultations", "mashwara": "Consultations", "hakeem": "Consultations",
+                "appointment": "AppointmentBooking", "book": "AppointmentBooking", "mulaqat": "AppointmentBooking",
+                "prescription": "Prescriptions", "medicine": "Prescriptions", "dawai": "Prescriptions", "nuskha": "Prescriptions",
+                "record": "HealthRecordNavigator", "report": "HealthRecordNavigator", "sehat": "HealthRecordNavigator",
+                "profile": "Profile", "account": "Profile"
+            };
+
+            let parsedIntent = { type: "chat", screen: null, params: {}, confidence: 0.80 };
             
-            const response = await axios.post(
-                `${CHATBOT_API_URL}/intent`,
-                {
-                    transcript,
-                    context
-                },
-                {
-                    timeout: 8000,
-                    headers: { 'Content-Type': 'application/json' }
+            for (const [kw, screen] of Object.entries(navKeywords)) {
+                if (text.includes(kw)) {
+                    parsedIntent = { type: "navigation", screen: screen, params: {}, confidence: 0.85 };
+                    break;
                 }
-            );
-
-            const parsedIntent = response.data;
-
+            }
 
             if (parsedIntent.type === 'navigation') {
                 console.log(`[IntentService] AI resolved to screen: ${parsedIntent.screen} with params: ${JSON.stringify(parsedIntent.params)}`);
@@ -163,7 +165,7 @@ class IntentService {
             };
 
         } catch (error) {
-            console.error('[IntentService Node] OpenAI API Error:', error.response?.data || error.message);
+            console.error('[IntentService Node] Fallback Error:', error.message);
             throw error;
         }
     }
