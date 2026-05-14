@@ -5,7 +5,7 @@ const axios = require('axios');
 const ChatSessionModel = require('../models/ChatSessionModel');
 const ChatMessageModel = require('../models/ChatMessageModel');
 
-const CHATBOT_API_URL = process.env.CHATBOT_API_URL || 'http://localhost:5001';
+const CHATBOT_API_URL = process.env.CHATBOT_API_URL || 'http://tabeeb-chatbot:5001';
 const URDU_PREFIX = 'Please respond in Urdu language.\n\n';
 
 const DEFAULT_TITLES = ['New chat', 'New Chat', 'نیا چیٹ'];

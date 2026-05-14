@@ -7,7 +7,7 @@ const express = require('express');
 const router = express.Router();
 const axios = require('axios');
 
-const CHATBOT_API_URL = process.env.CHATBOT_API_URL || 'http://localhost:5001';
+const CHATBOT_API_URL = process.env.CHATBOT_API_URL || 'http://tabeeb-chatbot:5001';
 const MAX_RETRIES = 3;
 const RETRY_DELAY = 1000;
 

@@ -36,3 +36,15 @@ services:
         sync: false
       - key: CORS_ORIGIN
         sync: false
+
+  - type: web
+    name: tabeeb-chatbot
+    env: python
+    rootDir: deploy_backend
+    buildCommand: pip install -r va/python_servers/requirements_va.txt || pip install flask flask_cors pandas joblib scikit-learn rapidfuzz gunicorn
+    startCommand: gunicorn services.chatbot_api:app -b 0.0.0.0:$PORT
+    healthCheckPath: /health
+    autoDeploy: true
+    envVars:
+      - key: PORT
+        value: 5001
